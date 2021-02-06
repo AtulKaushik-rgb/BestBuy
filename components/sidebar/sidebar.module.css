@@ -1,6 +1,6 @@
 .side_nav_container{
     width: 25vw;
-    height: 100vh;
+    height: 100%;
     background-color: white;
     margin-top: 10px;
     margin-left: 10px;
@@ -10,6 +10,12 @@
 .filter_text{
     padding-left: 15px;
     padding-top:10px;
+}
+.range_container{
+    background-color: peachpuff;
+}
+.brands_container{
+    background-color: powderblue;
 }
 
 
@@ -31,7 +37,7 @@
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    background-color: white;
+    background-color: sienna;
 
 }
 .content label{

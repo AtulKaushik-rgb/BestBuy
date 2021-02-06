@@ -8,11 +8,6 @@ const header = (props) => {
   const cartItem = useSelector(state => state.cart);
   const [inputText,setInputText] = useState('');
   const [redirect,setRedirect] = useState(false);
-  
-
-
-
- // props.methodCalled
 
   const dispatch = useDispatch();
 
@@ -89,18 +84,9 @@ const header = (props) => {
                 value={inputText}
                 onChange={inputChangeHandler}
               ></input>
-              {/* <i className="fas fa-search" onClick={searchInput}></i> */}
-              
-              {/* <NavLink to={{
-                pathname :`/search`,
-                search:`${inputText}`
-              }}
-              ><i className="fas fa-search"></i></NavLink> */}
+
               <p><i className="fas fa-search" onClick={()=>props.searchData(inputText)}></i></p>
-              {/* <span className={styles.search_icon}>
-              <Navlink to='/phones'> Phones </NavLink>
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </span> */}
+
             </div>
   
             <div className={styles.nav_ul}>

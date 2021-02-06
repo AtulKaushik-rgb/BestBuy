@@ -43,7 +43,7 @@ if(!showContent)
       <>
       {/* <Header/> */}
       <div className={styles.body_containers}>
-      <Sidebar loadedFrom={props.from} />
+      <Sidebar loadedFrom={props.from} searchQuery = {props.searchText}/>
       <Content loadedFrom={props.from} searchQuery = {props.searchText}/>
     </div>
     </>

@@ -7,6 +7,7 @@ const initialState = {
   clothes: [],
   cart:[],
   search:[],
+  filter:[],
   searchText:''
 };
 
@@ -36,8 +37,12 @@ const reducer = (state={initialState},action) => {
             console.log(action.payload)
             return {...state,items: action.payload}
           }
-        case 'ADD_SEARCH_ITEMS':
-          return {...state,search:[action.payload]}
+        // case 'ADD_SEARCH_ITEMS':
+        //   return {...state, search:[action.payload]}
+
+        case 'ADD_FILTERS':
+          return {...state,filter:[action.payload]}
+
         case 'ADD_TO_CART':
           {
             if(state.cart)

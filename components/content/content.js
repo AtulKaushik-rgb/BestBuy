@@ -10,6 +10,7 @@ const content = (props) => {
     const dispatch = useDispatch();
     //let searchText = useSelector(state=>state.searchText);
     let itemData = useSelector(state => state.items,shallowEqual);
+    let filterData = useSelector(state => state.filters,shallowEqual);
    // const cartItem = useSelector(state => state.cart);
     let searched = useSelector(state => state.searchText);
 
@@ -158,7 +159,15 @@ const content = (props) => {
     //  )
     let display = null;
     //console.log(itemData);
-    if(itemData)
+
+    if(filterData)
+    {
+      console.log('yayyy through filter data')
+      display = (
+        <Cardlists cardData = {itemData} />
+      )
+    }
+   else if(itemData)
     {
       console.log('yayyy through item data')
       display = (

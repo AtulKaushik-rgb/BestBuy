@@ -64,7 +64,6 @@
     width: 500px;
     height: 2.5rem;
     margin-top: 0.75rem;
-    border-bottom: 2px solid var(--dark-color);
     position: relative;
     overflow: hidden;
 }
@@ -96,21 +95,6 @@
 .badge:active{
     background-color:var(--new-color) ;
 }
-/* 
-input[type="text"] {
-    width: 200px;
-    height: 20px;
-    padding-right: 50px;
-}
-
-input[type="submit"] {
-    margin-left: -50px;
-    height: 20px;
-    width: 50px;
-} */
-/* .logo_container{
-    
-} */
 button{
    font-weight: 500;
 }
@@ -130,9 +114,7 @@ i {
     right: 0px;
 }
 
-search_div::after{
-    content:'\f002';
-}
+
 /* .cart{
     
 } */
