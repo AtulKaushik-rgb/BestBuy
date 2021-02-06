@@ -1,0 +1,138 @@
+.container{
+    width: 90vw;
+    height:10vh;
+    margin: 0 auto;
+}
+
+.nav_container{
+    width: 100%;
+    height: 100%;
+    background-color: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.logo{
+    background-color: none;
+}
+
+.nav_ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.nav_lists{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+}
+.nav_lists:visited{
+    list-style:none;
+}
+.nav_lists  a:hover{
+    list-style:none;
+    transform: scale(1.2);
+}
+
+.nav_li{
+    margin: 0px 20px;
+    
+}
+.nav_li a{
+    color: white;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+.nav_header{
+    height:10vh;
+    width: 100%;
+    background-color: var(--new-color);
+    color: #fff;
+}
+.search_div{
+    width: 500px;
+    height: 100%;
+    display: relative;
+    
+}
+.search_input{
+    width: 500px;
+    height: 2.5rem;
+    margin-top: 0.75rem;
+    border-bottom: 2px solid var(--dark-color);
+    position: relative;
+    overflow: hidden;
+}
+.search_icon{
+    /* position: absolute; */
+    top: 1.2rem;
+    left: 720px; 
+    color: black;
+    font-size: 1.2rem;
+    position: fixed;
+    
+}
+.search_input::after{
+    content: '\f002';
+    right: 10px;
+}
+
+
+.badge {
+    color: white;
+    font-weight: 700;
+    background-color: var(--new-color);
+    border: none;
+    font-size:1.5rem
+}
+.badge:hover{
+    background-color:var(--new-color) ;
+}
+.badge:active{
+    background-color:var(--new-color) ;
+}
+/* 
+input[type="text"] {
+    width: 200px;
+    height: 20px;
+    padding-right: 50px;
+}
+
+input[type="submit"] {
+    margin-left: -50px;
+    height: 20px;
+    width: 50px;
+} */
+/* .logo_container{
+    
+} */
+button{
+   font-weight: 500;
+}
+
+.nav_active{
+    background-color: blue;
+    color: white;
+    width: 100%;
+    height: 10vh;
+    border-radius: 5vh;
+}
+
+i {
+    display: absolute;
+    color: black;
+    top: -20px;
+    right: 0px;
+}
+
+search_div::after{
+    content:'\f002';
+}
+/* .cart{
+    
+} */
