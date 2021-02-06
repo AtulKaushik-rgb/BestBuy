@@ -1,32 +1,81 @@
 import React,{useState,useEffect} from 'react'
 import styles from "./content.module.css";
-import { useDispatch,useSelector} from 'react-redux';
-
+import { useDispatch,useSelector,shallowEqual} from 'react-redux';
 import Cardlists from "../cardlists/cardlists"
 import axios from 'axios'
 
 const content = (props) => {
 
-    const [searchQueryText,setSearchQueryText] = useEffect('');
+    //const [searchQueryText,setSearchQueryText] = useEffect('') searchQuery
     const dispatch = useDispatch();
-    let searchText = useSelector(state=>state.searchText);
-
+    //let searchText = useSelector(state=>state.searchText);
+    let itemData = useSelector(state => state.items,shallowEqual);
+   // const cartItem = useSelector(state => state.cart);
+    let searched = useSelector(state => state.searchText);
 
     
+    //console.log(datat.items);
+    //props.searchQuery
+    if(searched)
+    console.log('search exists');
+    else
+    console.log('search not exists');
+
+    if(itemData)
+    console.log('item exists');
+    else
+    console.log('item not exists');
+    // itemData?'item exists':'item doesnt exists'
+
+    let data = null;
+    let query = props.searchQuery?props.searchQuery:'all';
+
+    // console.log(itemData);
+    // console.log(searched);
+
+
+    console.log(query);
+
+    // searched)
+    // query
+
+    if(!itemData)
+    {
+      const getData = async () => {
+             const contentData = await axios.get(
+              `http://localhost:3000/items/search?q=${query}`
+             );
+             if (contentData) data = contentData;
+             //console.log('dispatching...')
+             dispatch({ type: "ADD_ITEMS", payload: data})
+            //  if(query=='refresh')
+            //  dispatch({ type: "ADD_SEARCH_ITEMS", payload: data.data})
+           };
+           getData();
+
+    }
+
+    // if(!itemData)
+    // {
+
+
+    // }
+    //let searchData = useSelector(state=>state.search);
+
     // console.log('inside content');
-    console.log(props);
-     let target = props.loadedFrom;
-     let query = props.searchQuery;
+    // console.log(props);
+    //  let target = props.loadedFrom;
+    //  let query = props.searchQuery;
 
     //  if(target=='home')
     //  target='clothes'
     // console.log('loaded from '+target);
     // console.log('props are');
-    console.log(props)
-    console.log('searchText should be'+query);
+    // console.log(props)
+    // console.log('searchText should be'+query);
     
-    if(!query)
-      query='refresh'
+    // if(!query)
+    //   query='refresh'
 
 
     //console.log(props.location.queryParams)
@@ -50,7 +99,7 @@ const content = (props) => {
     // let searchQuery = `http://localhost:3000/items/${target}${queryParams}`
 
 
-    let qt = `http://localhost:3000/items/${target}`;
+    // let qt = `http://localhost:3000/items/${target}`;
 
     
     // if(!props.loadedFrom)
@@ -58,53 +107,72 @@ const content = (props) => {
     //   console.log('Here it is loaded from search so it should get shirt');
     //   p = `http://localhost:3000/items/search?q=tshirt`
     // }
-     if(query!='refresh')
-     {
-      qt = `http://localhost:3000/items/search?q=${query}`
-     }
-     else
-     {
-      qt = `http://localhost:3000/items/search?q=all`
-     }
+    //  if(query!='refresh')
+    //  {
+    //   qt = `http://localhost:3000/items/search?q=${query}`
+    //  }
+    //  else
+    //  {
+    //   qt = `http://localhost:3000/items/search?q=all`
+    //  }
      
-     setSearchQueryText(query);
 
-     console.log('it should go for here'+qt)
+    //  console.log('it should go for here'+qt)
 
-    const [itemData,setItemData] = useState([]);
-     let data = null;
+    //const [itemData,setItemData] = useState([]);
+    // let data = null;
 
-     useEffect(() => {
+    //  useEffect(() => {
 
-      console.log('inside use effect')
-       const getData = async () => {
-         const contentData = await axios.get(
-          qt
-         );
-         if (contentData) data = contentData;
+    //   console.log('inside use effect')
+    //    const getData = async () => {
+    //      const contentData = await axios.get(
+    //       qt
+    //      );
+    //      if (contentData) data = contentData;
 
-        //  if(query)
-        //  console.log(data.data)
+    //     //  if(query)
+    //     //  console.log(data.data)
 
-         console.log('setting data in set item data');
-         console.log(data.data)
-         setItemData(data.data);
-         //console.log('dispatching...')
-         dispatch({ type: "ADD_ITEMS", payload: data.data})
-       };
+    //      console.log('setting data in set item data');
+    //      console.log(data.data)
+    //      setItemData(data.data);
+    //      //console.log('dispatching...')
+    //      dispatch({ type: "ADD_ITEMS", payload: data.data})
+    //     //  if(query=='refresh')
+    //     //  dispatch({ type: "ADD_SEARCH_ITEMS", payload: data.data})
+    //    };
 
-       if (props.loadedFrom ){
-        getData();
-        // console.log('will dispatch from here')
-        // console.log(itemData)
-        // dispatch({ type: "ADD_ITEMS", payload: itemData})
-       } 
-     }, [searchQueryText]);
+    //    if (props.loadedFrom ){
+    //     getData();
+    //     // console.log('will dispatch from here')
+    //     // console.log(itemData)
+    //     // dispatch({ type: "ADD_ITEMS", payload: itemData})
+    //    } 
+    //  }, [query]);
 
+    //  let display = null;
+    //  if(searchData)
+    //  display = (
+    //   <Cardlists cardData = {searchData?searchData:prevData} query={query}/>
+    //  )
+    let display = null;
+    //console.log(itemData);
+    if(itemData)
+    {
+      console.log('yayyy through item data')
+      display = (
+        <Cardlists cardData = {itemData} />
+      )
+    }
+    else{
+      <Cardlists cardData = {data} />
+    }
+    
     return (
         <div className={styles.content_containers}>
             <div className={styles.cardlist_containers}>
-            <Cardlists cardData = {itemData}/>
+            {display}
             </div>
         </div>
     )

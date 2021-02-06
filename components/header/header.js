@@ -10,7 +10,7 @@ const header = (props) => {
   const [redirect,setRedirect] = useState(false);
   
 
-  console.log(props)
+
 
  // props.methodCalled
 
@@ -24,7 +24,7 @@ const header = (props) => {
     setInputText(e.target.value)
   }
   const addText = ()=>{
-     console.log('inside search input')
+    
     // console.log(props);
     
     // setRedirect(true);

@@ -6,6 +6,7 @@ const initialState = {
   phones: [],
   clothes: [],
   cart:[],
+  search:[],
   searchText:''
 };
 
@@ -24,13 +25,19 @@ const initialState = {
 const reducer = (state={initialState},action) => {
     switch (action.type) {
         case 'ADD_TEXT' :
-          return {...state,searchText:action.payload}
+          {
+              console.log('text added is '+action.payload);
+              return {...state,searchText:action.payload}
+          }
+          
         case 'ADD_ITEMS':
           {
-            console.log(state.items);
+            //console.log(state.items);
             console.log(action.payload)
-            return {...state, items: action.payload}
+            return {...state,items: action.payload}
           }
+        case 'ADD_SEARCH_ITEMS':
+          return {...state,search:[action.payload]}
         case 'ADD_TO_CART':
           {
             if(state.cart)

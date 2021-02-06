@@ -12,14 +12,16 @@ const body = (props) => {
   let display = null;
 
   useEffect(() => {
+    console.log('inside body '+props.from);
 
     if(props.from)
     setShowContent(true);    
 
-  }, []); 
+  }, [showContent]); 
 
 if(!showContent)
   {
+    console.log('should not render')
      display = (
       <>
       <Home/>
@@ -31,8 +33,9 @@ if(!showContent)
   else
   {
     //if(props.loadedFrom!='Home')
-    console.log(props);
-    console.log('data actually reached here'+props.searchText)
+    // console.log('should  render')
+    // console.log(props);
+    // console.log('data actually reached here'+props.searchText)
     // let query = props.location.search;
     // console.log(query.substring(1));
 

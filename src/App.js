@@ -8,12 +8,14 @@ import Modal from '../components/modal/modal'
 import Home from '../components/home/home1'
 import Product from '../UI/products/product'
 import axios from 'axios';
+import {useDispatch} from 'react-redux';
 
 
 const App = (props)=> {
 
+  let dispatch = useDispatch();
   const [searchText,setSearchText] = useState('');
-  let data = null;
+  //let data = null;
   //let queryText = `http://localhost:3000/items/search?q=${searchText}`;
 
   // useEffect(()=>{
@@ -38,12 +40,68 @@ const App = (props)=> {
 
   const handleCallback = (childData) =>{
     setSearchText(childData);
-    console.log('props is')
-    console.log(props);
-    //props.history.push(path);
-    console.log('data from child is '+childData)
-   // this.setState({data: childData})
+    dispatch({ type: "ADD_TEXT", payload: childData})
+
+
+   let data = null;
+    // const getData = async () => {
+
+    // //console.log('inside get data with searchtext'+childData);
+    // let queryText = `http://localhost:3000/items/search?q=${childData}`;
+
+    // console.log(queryText)
+    // const contentData = await axios.get(
+    //  queryText
+    // );
+
+    //       const getData = async () => {
+    //          const contentData = await axios.get(
+    //           `http://localhost:3000/items/search?q=all`
+    //          );
+    //          if (contentData) data = contentData;
+    //          //console.log('dispatching...')
+    //          dispatch({ type: "ADD_ITEMS", payload: data})
+    //         //  if(query=='refresh')
+    //         //  dispatch({ type: "ADD_SEARCH_ITEMS", payload: data.data})
+    //        };
+    
+    //        getData();
+
+
+    // console.log(contentData)
+
+    // if(contentData)
+    // data = contentData;
+
+    // console.log(data)
+
+    // }
+    // if(childData)
+    // getData();
+    const getData = async () => {
+      const contentData = await axios.get(
+       `http://localhost:3000/items/search?q=${childData}`
+      );
+      if (contentData) data = contentData;
+      //console.log('dispatching...')
+      dispatch({ type: "ADD_ITEMS", payload: data})
+     //  if(query=='refresh')
+     //  dispatch({ type: "ADD_SEARCH_ITEMS", payload: data.data})
+    };
+
+    getData();
+
+
+
+   return dispatch({ type: "ADD_ITEMS", payload: data})
+   
 }
+
+// useEffect(()=>{
+// console.log(props)
+// },[searchText])
+
+
     // const { name } = this.props;
     return (
       <>
