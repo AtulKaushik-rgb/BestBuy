@@ -32,3 +32,18 @@
     justify-content: center;
     padding-left: 20px;
 }
+
+.body button{
+    color: white;
+    background-color: var(--new-color);
+    border: none;
+    width: 100px;
+    height: auto;
+    margin: 5px;
+    padding: 5px;
+}
+.body button:disabled{
+    color: black;
+    background: gray;
+    cursor: not-allowed ! important;
+}

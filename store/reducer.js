@@ -41,7 +41,49 @@ const reducer = (state={initialState},action) => {
         //   return {...state, search:[action.payload]}
 
         case 'ADD_FILTERS':
-          return {...state,filter:[action.payload]}
+        return {...state,filter:[action.payload]}
+
+        // case 'FILTER_BOOKS':
+        //   {
+        //     console.log('inside books')
+        //     return {...state,items:items.filter(item=>item.type == 401)}
+        //   }
+
+        //   case 'FILTER_BOOKS':
+        //     {
+        //       console.log('inside clothes')
+        //       return {...state,items:items.filter(item=>item.type == 400)}
+        //     }
+          
+            case 'FILTER_PHONES':
+          {
+                console.log('inside phones')
+                console.log(state.items)
+                let abc = state.items.filter(item=>item.type == 402);
+                console.log(abc);
+                return {...state,items:abc}// state.items.filter(item=>item.type == '402')}
+          }
+          case 'FILTER_CLOTHES': 
+          {
+            console.log('inside clothes')
+            console.log(state.items)
+            let abc = state.items.filter(item=>item.type == 400);
+            console.log(abc);
+            return {...state,items:abc}// state.items.filter(item=>item.type == '402')}
+          }
+           // return {...state, items: state.items.data.filter(item=>item.type == '400')}
+
+          case 'FILTER_BOOKS':
+            {
+              console.log('inside books')
+              console.log(state.items)
+              let abc = state.items.filter(item=>item.type == 401);
+              console.log(abc);
+              return {...state,items:abc}// state.items.filter(item=>item.type == '402')}
+            }
+             // return {...state,items:state.items.data.filter(item=>item.type == '401')}
+    
+
 
         case 'ADD_TO_CART':
           {

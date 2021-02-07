@@ -6,10 +6,14 @@ import { Toast } from "bootstrap";
 
 const card = (props) => {
 
+  console.log('inside indi cards');
+
     const title = props.cardData.title;
     const url = props.cardData.imageUrl;
     const prices = props.cardData.prices;
     const stars = props.cardData.customer_rating;
+
+    console.log(title,url,prices,stars)
 
     const [disabledButton,setDisabledButton] = useState(false);
     const dispatch = useDispatch()
@@ -31,7 +35,7 @@ const card = (props) => {
 
   return (
     <>
-    {/* {toastMessage} */}
+    {console.log('inside return')}
     <div className={styles.card}>
       <div className={styles.card_image}>
         <img
@@ -43,7 +47,7 @@ const card = (props) => {
         <h5>{title}</h5>
         <p className={styles.stars}>{stars}★</p>
         <h6>{prices}</h6>
-        <button id='cart_button' disabled={disabledButton} onClick={addToCardClickHandler}>Add to cart</button>
+        <button id='cart_button' disabled={disabledButton} onClick={addToCardClickHandler}>{disabledButton?'Added ✓':'Add to cart'}</button>
       </div>
     </div>
     </>

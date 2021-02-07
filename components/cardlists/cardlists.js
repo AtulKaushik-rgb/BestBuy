@@ -3,17 +3,18 @@ import Card from '../card/card'
 import styles from './cardlists.module.css'
 import {useSelector} from 'react-redux'
 
-const cardlists = (props) => {
+const cardlists = React.memo((props) => {
 
     const [item,setItem] = useState([]); 
     let cardItems = null;
     let items = [];
-    cardItems = props.cardData;
+    cardItems = props.data;
+    //let itemData = useSelector(state => state.items);
     //console.log(cardItems);
 
     //setItem(cardItems);
 
-     items = useSelector(state => state.items);
+     //items = useSelector(state => state.items);
     // console.log(items)
 
     // console.log(items.map(dt=>dt.name));
@@ -26,12 +27,14 @@ const cardlists = (props) => {
 
     let itemsToRender;
     
-    if(items)
-    {
-      itemsToRender = items.data.map(item => {
+    // if(itemData)
+    console.log(cardItems);
+    // {
+      //console.log(items);
+      itemsToRender = cardItems.map(item => {
         return <Card key={item.id} cardData = {item}/>;
       });
-    }
+    // }
 
 
       console.log(itemsToRender);
@@ -41,6 +44,6 @@ const cardlists = (props) => {
            {itemsToRender} 
         </div>
     )
-}
+})
 
 export default cardlists

@@ -3,11 +3,12 @@ import styles from "../header/header.module.css";
 import "./header.module.css";
 import {NavLink,Redirect,withRouter} from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
+import Modal from '../modal/modal'
 const header = (props) => {
 
   const cartItem = useSelector(state => state.cart);
   const [inputText,setInputText] = useState('');
-  const [redirect,setRedirect] = useState(false);
+  const [show,setShow] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -18,6 +19,15 @@ const header = (props) => {
   const inputChangeHandler = (e)=>{
     setInputText(e.target.value)
   }
+
+  const handleClose = () =>{
+    setShow(false)
+  }
+  const openDialog = () =>{
+    setShow(true)
+  }
+
+
   const addText = ()=>{
     
     // console.log(props);
@@ -85,7 +95,7 @@ const header = (props) => {
                 onChange={inputChangeHandler}
               ></input>
 
-              <p><i className="fas fa-search" onClick={()=>props.searchData(inputText)}></i></p>
+              <p className={styles.icon}><i className="fas fa-search " onClick={()=>props.searchData(inputText)}></i></p>
 
             </div>
   
@@ -103,12 +113,17 @@ const header = (props) => {
               </ul>
             </div>
             <div className={styles.badge}>
-              <button onClick={()=>alert('Items in carts are'+cartItemCount)} type="button" className="btn btn-primary">
+              <button onClick={()=>{setShow(true)}} type="button" className="btn btn-primary">
                 Cart <span className={` ${cartItemCount?`badge badge-light`:``}`}>{cartItemCount?cartItemCount:''}</span>
               </button>
             </div>
           </div>
         </div>
+
+        <Modal display={show} handleClose = {handleClose} cartItem = {cartItem}>
+
+        </Modal>
+
       </div>
     </>
   );

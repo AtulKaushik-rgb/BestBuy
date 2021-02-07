@@ -1,10 +1,10 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import './product.module.css'
+import styles from './product.module.css'
 
 import React from 'react'
 
-const product = () => {
+const product = (props) => {
 
     const responsive = {
         desktop: {
@@ -15,6 +15,11 @@ const product = () => {
       };
 
     return (
+      <div className={styles.product_container}>
+      <div className={styles.heading}>
+        <h3>{props.displayData}</h3>
+      </div>
+      <div className={styles.carousel}>
 <Carousel
    swipeable={true}
 //   draggable={false}
@@ -46,7 +51,9 @@ const product = () => {
   <div><img style={{width:'200px',height:'200px'}} src="https://rukminim1.flixcart.com/image/150/150/khkvukw0-0/shoe/n/v/w/hiw12-7-reebok-black-nacho-original-imafxk87agx9hyvz.jpeg"></img></div>
   <div><img style={{width:'200px',height:'200px'}} src="https://rukminim1.flixcart.com/flap/150/150/image/00617aba3b2e6acc.jpg" alt="First slide"></img></div>
 </Carousel>
-    )
+</div>
+   </div>
+   )
 }
 
 export default product

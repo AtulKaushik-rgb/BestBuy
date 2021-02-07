@@ -3,6 +3,9 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "../components/header/header";
 import Body from "../components/body/body";
+import Books from "../components/books/books";
+import Clothes from "../components/clothes/clothes";
+import Phones from "../components/phones/phones";
 import {Route,Switch} from 'react-router-dom'
 import Modal from '../components/modal/modal'
 import Home from '../components/home/home1'
@@ -16,11 +19,17 @@ const App = (props)=> {
 
   let dispatch = useDispatch();
   const [searchText,setSearchText] = useState('');
+  const [status,setStatus] = useState(false);
 
 
+  // const handlerLogo = ()=>{
+  //   //setStatus(true);
+  // }
   const handleCallback = (childData) =>{
     setSearchText(childData);
+    setStatus(true);
     dispatch({ type: "ADD_TEXT", payload: childData})
+
 
 
    let data = null;
@@ -40,7 +49,7 @@ const App = (props)=> {
 
 
 
-   return dispatch({ type: "ADD_ITEMS", payload: data})
+   //return dispatch({ type: "ADD_ITEMS", payload: data})
    
 }
 
@@ -52,17 +61,24 @@ const App = (props)=> {
     // const { name } = this.props;
     return (
       <>
-      <Header searchData ={handleCallback}/>
+      <Header searchData = {handleCallback}/>
       <Switch>
-      <Route key='phones'  path='/' 
-      render={(props) => <Body from="home" searchText={searchText} {...props} />}
-      ></Route>
-      <Route key='phones'  path='/phones'
-      render={(props) => <Body from="phones" {...props} />}></Route>
-      <Route key='books'  path='/books'
-      render={(props) => <Body from="books" {...props} />}></Route>
-      <Route key='clothes' path='/clothes'
-      render={(props) => <Body from="clothes" {...props} />}></Route>
+      {/* <Route key='phones' exact  path='/' 
+      render={(props) => <Body status={status} from="home" searchText={searchText} {...props} />}
+      ></Route> */}
+      {/* <Route key='phones'  path='/search' 
+      render={(props) => <Body status={status} from="home" searchText={searchText} {...props} />}
+      ></Route> */}
+      {/* <Route key='phones'  path='/phones'
+      render={(props) => <Body  from="phones" {...props} />}></Route> */}
+      {/* <Route key='books'  path='/books'
+      render={(props) => <Body from="books" {...props} />}></Route> */}
+      {/* <Route key='clothes' path='/clothes'
+      render={(props) => <Body from="clothes" {...props} />}></Route> */}
+
+      <Route  path='/books'component={Books}></Route>
+      <Route  path='/clothes'component={Clothes}></Route>
+      <Route  path='/phones'component={Phones}></Route>
       </Switch>
       <Footer/>
       </>

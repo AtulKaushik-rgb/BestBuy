@@ -9,10 +9,13 @@ const content = (props) => {
     //const [searchQueryText,setSearchQueryText] = useEffect('') searchQuery
     const dispatch = useDispatch();
     //let searchText = useSelector(state=>state.searchText);
-    let itemData = useSelector(state => state.items,shallowEqual);
-    let filterData = useSelector(state => state.filters,shallowEqual);
+   // let itemData = useSelector(state => state.items,shallowEqual);
+    //let filterData = useSelector(state => state.filters,shallowEqual);
    // const cartItem = useSelector(state => state.cart);
     let searched = useSelector(state => state.searchText);
+    const [currentData,setCurrentData] = useState([]);
+    const [newData,setNewData] = useState([]);
+    let value = 0;
 
     
     //console.log(datat.items);
@@ -22,14 +25,18 @@ const content = (props) => {
     else
     console.log('search not exists');
 
-    if(itemData)
-    console.log('item exists');
-    else
-    console.log('item not exists');
-    // itemData?'item exists':'item doesnt exists'
+    // if(itemData)
+    // console.log('item exists');
+    // else
+    // console.log('item not exists');
+    // // itemData?'item exists':'item doesnt exists'
 
-    let data = null;
+    
+
+    //let data = null;
     let query = props.searchQuery?props.searchQuery:'all';
+
+    
 
     // console.log(itemData);
     // console.log(searched);
@@ -39,22 +46,129 @@ const content = (props) => {
 
     // searched)
     // query
+    let data = [];
+    useEffect(()=>{
 
-    if(!itemData)
-    {
+      console.log('useEffect called');
       const getData = async () => {
+
+        let url = null;
+        if(props.loadedFrom)
+        {
+          url = `http://localhost:3000/items/${props.loadedFrom}`;
+        }
+        else if(props.searchQuery)
+        {
+          url =`http://localhost:3000/items/search?q=${query}`;
+        }
+        else
+        {
+          url =`http://localhost:3000/items/search?q=all`;
+        }
              const contentData = await axios.get(
-              `http://localhost:3000/items/search?q=${query}`
+              url
              );
-             if (contentData) data = contentData;
+             if (contentData)
+              data = contentData;
+            console.log('data value is');
+              console.log(contentData.data);
+            console.log('after adding is');
+             data = [...contentData.data];
+             setCurrentData(data);
+             //setNewData(data);
              //console.log('dispatching...')
-             dispatch({ type: "ADD_ITEMS", payload: data})
+             //dispatch({ type: "ADD_ITEMS", payload: data.data})
             //  if(query=='refresh')
             //  dispatch({ type: "ADD_SEARCH_ITEMS", payload: data.data})
            };
            getData();
 
-    }
+
+    },[])
+
+    // if(!itemData)
+    // {
+    //   const getData = async () => {
+
+    //     let url = null;
+    //     if(props.loadedFrom)
+    //     {
+    //       url = `http://localhost:3000/items/${props.loadedFrom}`;
+    //     }
+    //     else if(props.searchQuery)
+    //     {
+    //       url =`http://localhost:3000/items/search?q=${query}`;
+    //     }
+    //     else
+    //     {
+    //       url =`http://localhost:3000/items/search?q=all`;
+    //     }
+    //          const contentData = await axios.get(
+    //           url
+    //          );
+    //          if (contentData)
+    //           data = contentData;
+    //         console.log('data value is');
+    //           console.log(contentData.data);
+    //         console.log('after adding is');
+    //          data = [...contentData.data];
+    //          //setCurrentData(data)
+    //          //console.log('dispatching...')
+    //          //dispatch({ type: "ADD_ITEMS", payload: data.data})
+    //         //  if(query=='refresh')
+    //         //  dispatch({ type: "ADD_SEARCH_ITEMS", payload: data.data})
+    //        };
+    //        getData();
+
+    // }
+
+    
+
+    // useEffect(()=>{
+      // if(props.loadedFrom)
+      // {
+      //   const getData = async () => {
+      //          const contentData = await axios.get(
+      //           `http://localhost:3000/items/${props.loadedFrom}`
+      //          );
+      //          if (contentData) data = contentData;
+      //          console.log(contentData.data);
+      //          data = [...contentData.data];
+      //          console.log(data);
+      //          value=1;
+  
+      //          //setCurrentData(contentData.data);
+      //          //console.log('dispatching...')
+      //          //dispatch({ type: "ADD_ITEMS", payload: data.data})
+      //         //  if(query=='refresh')
+      //         //  dispatch({ type: "ADD_SEARCH_ITEMS", payload: data.data})
+      //        };
+      //        getData();
+      // }
+    // },[])
+
+
+
+    // if(props.loadedFrom)
+    // {
+    //   const getData = async () => {
+    //          const contentData = await axios.get(
+    //           `http://localhost:3000/items/${props.loadedFrom}`
+    //          );
+    //          if (contentData) data = contentData;
+    //          console.log(contentData.data);
+    //          data = [...contentData.data];
+    //          console.log(data);
+
+    //          //setCurrentData(contentData.data);
+    //          //console.log('dispatching...')
+    //          //dispatch({ type: "ADD_ITEMS", payload: data.data})
+    //         //  if(query=='refresh')
+    //         //  dispatch({ type: "ADD_SEARCH_ITEMS", payload: data.data})
+    //        };
+    //        getData();
+
+    // }
 
     // if(!itemData)
     // {
@@ -160,23 +274,27 @@ const content = (props) => {
     let display = null;
     //console.log(itemData);
 
-    if(filterData)
-    {
-      console.log('yayyy through filter data')
-      display = (
-        <Cardlists cardData = {itemData} />
-      )
-    }
-   else if(itemData)
-    {
-      console.log('yayyy through item data')
-      display = (
-        <Cardlists cardData = {itemData} />
-      )
-    }
-    else{
-      <Cardlists cardData = {data} />
-    }
+    // if(filterData)
+    // {
+    //   console.log('yayyy through filter data')
+    //   display = (
+    //     <Cardlists cardData = {itemData} />
+    //   )
+    // }
+  //  else if(itemData)
+  //   {
+  //     console.log('yayyy through item data')
+  //     display = (
+  //       <Cardlists cardData = {itemData} />
+  //     )
+  //   }
+    //else{
+      
+      console.log('inisde last option');
+      console.log(currentData);
+      display = (<Cardlists key={currentData} data = {currentData}/>)
+      
+   // }
     
     return (
         <div className={styles.content_containers}>

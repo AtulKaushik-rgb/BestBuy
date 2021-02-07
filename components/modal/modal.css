@@ -11,10 +11,15 @@
     position:fixed;
     background: white;
     width: 80%;
-    height: auto;
+    height: 100%;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
+    color: black;
+    overflow-y: scroll;
+  }
+  li {
+    list-style: none;
   }
   
   .display-block {
@@ -23,4 +28,24 @@
   
   .display-none {
     display: none;
+  }
+  .content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+  .content  h1,.content h3 {
+    margin: 10px;
+    border:2px solid black ;
+    
+    padding: 20px;
+  }
+  .modalbtn{
+    background-color: var(--dark-color);
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    float:right;
   }

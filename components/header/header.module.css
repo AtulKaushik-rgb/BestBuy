@@ -55,10 +55,16 @@
     color: #fff;
 }
 .search_div{
-    width: 500px;
+    width: auto;
     height: 100%;
     display: relative;
-    
+}
+.icon{
+    position: absolute;
+    top: 12px;
+    left: 740px;
+    padding: 10px;
+
 }
 .search_input{
     width: 500px;
@@ -113,6 +119,7 @@ i {
     top: -20px;
     right: 0px;
 }
+
 
 
 /* .cart{

@@ -104,7 +104,7 @@ const footer = () => {
       <footer className="footer">
         <div className="footer-inner">
           <div>
-            <i style={{color:'white'}} className="fas fa-globe fa2x"></i>English(United States)
+            <i style={{color:'white'}} className="fas fa-globe fa-2x"></i>English(United States)
           </div>
         <div>
               <h4>Follow us on</h4>

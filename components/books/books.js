@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react";
-import styles from "./body.module.css";
+import styles from "./books.module.css";
 import Sidebar from "../sidebar/sidebar"
 import Content from "../content/content"
 import Home from '../../components/home/home1'
@@ -8,7 +8,7 @@ import Header from '../header/header'
 import {useLocation} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 
-const body = (props) => {
+const books = (props) => {
 
   const [showContent, setShowContent] = useState(false);
   const dispatch = useDispatch();
@@ -22,20 +22,20 @@ const body = (props) => {
 
   currentPath = location.pathname.substring(1);
 
-  useEffect(() => {
-    console.log('inside body '+props.from);
+//   useEffect(() => {
+//     console.log('inside body '+props.from);
 
-    if(props.from)
-    setShowContent(true);  
-    console.log('FILTER'+'_'+currentPath.toUpperCase()) 
+//     if(props.from)
+//     setShowContent(true);  
+//     console.log('FILTER'+'_'+currentPath.toUpperCase()) 
 
-    // if(currentPath)
-    // dispatch({type:'FILTER'+'_'+currentPath.toUpperCase(),payload:currentPath})
+//     // if(currentPath)
+//     // dispatch({type:'FILTER'+'_'+currentPath.toUpperCase(),payload:currentPath})
     
     
     
 
-  },[]); 
+//   },[]); 
 
   //console.log('FILTER'+'_'+currentPath.toUpperCase()); 
 
@@ -45,18 +45,19 @@ const body = (props) => {
 
 
 
-if(!currentPath)
-  {
-     display = 
-      <>
-      <Home/>
-      <Product/>
-      <Product/>
-      </>
-  }
-  else
-  {
-    display=
+// if(!currentPath)
+//   {
+//      display = 
+//       <>
+//       <Home/>
+//       <Product/>
+//       <Product/>
+//       </>
+//   }
+//   else
+//   {
+
+    display =
       <>
       <div className={styles.body_containers}>
       <Sidebar loadedFrom={currentPath} searchQuery = {props.searchText}/>
@@ -66,7 +67,7 @@ if(!currentPath)
     
 
 
-  }
+ // }
 
 
 //   else
@@ -83,7 +84,7 @@ if(!currentPath)
   return (
     <>
       {display}
-</>
+    </>
 
 
 
@@ -93,4 +94,4 @@ if(!currentPath)
 
 };
 
-export default body;
+export default books;
