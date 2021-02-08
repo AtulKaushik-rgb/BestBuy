@@ -22,51 +22,75 @@ const body = (props) => {
 
   currentPath = location.pathname.substring(1);
 
-  useEffect(() => {
-    console.log('inside body '+props.from);
+  if(!currentPath)
+  {
+    console.log('pathname is null');
+    console.log('query is'+props.searchText)
+  }
 
-    if(props.from)
-    setShowContent(true);  
-    console.log('FILTER'+'_'+currentPath.toUpperCase()) 
 
-    // if(currentPath)
-    // dispatch({type:'FILTER'+'_'+currentPath.toUpperCase(),payload:currentPath})
+  // useEffect(() => {
+  //   console.log('inside body '+props.from);
+
+ 
+  //   //console.log('FILTER'+'_'+currentPath.toUpperCase()) 
+
+  //   // if(currentPath)
+  //   // dispatch({type:'FILTER'+'_'+currentPath.toUpperCase(),payload:currentPath})
     
     
     
 
-  },[]); 
+  // },[]); 
 
   //console.log('FILTER'+'_'+currentPath.toUpperCase()); 
 
   // if(currentPath)
   // dispatch({type:'FILTER'+'_'+currentPath.toUpperCase(),payload:currentPath})
   
+if(props.status)
+{
+  display=
+  <>
+  <div className={styles.body_containers}>
+  <Sidebar loadedFrom={currentPath} searchQuery = {props.searchText}/>
+  <Content loadedFrom={currentPath} searchQuery = {props.searchText}/>
+</div>
+</>
+}
+else
+{
+  display = 
+  <>
+  <Home/>
+  </>
+
+}
 
 
-
-if(!currentPath)
-  {
-     display = 
-      <>
-      <Home/>
-      <Product/>
-      <Product/>
-      </>
-  }
-  else
-  {
-    display=
-      <>
-      <div className={styles.body_containers}>
-      <Sidebar loadedFrom={currentPath} searchQuery = {props.searchText}/>
-      <Content loadedFrom={currentPath} searchQuery = {props.searchText}/>
-    </div>
-    </>
+// if(!currentPath || !props.status)
+//   {
+//     console.log('inside condition with '+props.status+'and path ='+currentPath)
+//      display = 
+//       <>
+//       <Home/>
+//       <Product/>
+//       <Product/>
+//       </>
+//   }
+//   else
+//   {
+//     display=
+//       <>
+//       <div className={styles.body_containers}>
+//       <Sidebar loadedFrom={currentPath} searchQuery = {props.searchText}/>
+//       <Content loadedFrom={currentPath} searchQuery = {props.searchText}/>
+//     </div>
+//     </>
     
 
 
-  }
+//   }
 
 
 //   else

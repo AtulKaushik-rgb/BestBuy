@@ -6,13 +6,13 @@ const Modal = (props) => {
   const showHideClassName = props.display
     ? "modal display-block"
     : "modal display-none";
-  console.log("class name is " + showHideClassName);
+  //console.log("class name is " + showHideClassName);
   //const showHideClassName = show ? "modal display-block" : "modal display-none";
 
-  console.log("rendering modal");
+  //console.log("rendering modal");
   let display = <h1>Sorry no data found</h1>;
 
-  console.log(props.cartItem);
+ // console.log(props.cartItem);
   // "id": 113,
   // "title": "IPhone 12",
   // "desc": "This is book1",
@@ -23,7 +23,7 @@ const Modal = (props) => {
   // "type":402
 
   if (props.cartItem) {
-    console.log(props.cartItem);
+    //console.log(props.cartItem);
     display = props.cartItem.map((item) => {
       return (
         <>

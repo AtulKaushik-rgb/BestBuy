@@ -1,13 +1,22 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import "react-bootstrap";
 import { Carousel } from "react-bootstrap";
-import "./home.module.css";
+import styles from "./home.module.css";
 import Card from '../card/card'
+import Product from '../../UI/products/product'
+import Items from '../../UI/products/items'
 
 const home1 = () => {
+  let deal1 = `Today's offer`;
+  let deal2 = `Deals you can't ignore`;
+  const [deal,setDeal] = useState({deal1:"", deal2:""})
+
+  useEffect(()=>{
+    setDeal({deal1:"Today's offer",deal2:"Deals you can't ignore"})
+  },[])
   return (
     <>
-      <div>
+      <div class={styles.homeStyle}>
         <Carousel>
           <Carousel.Item interval={1000}>
             <img
@@ -32,6 +41,8 @@ const home1 = () => {
           </Carousel.Item>
         </Carousel>
       </div>
+      <Product deal={deal.deal1}/>
+      <Items deal={deal.deal2}/>
     </>
   );
 };

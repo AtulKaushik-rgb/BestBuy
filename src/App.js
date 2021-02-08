@@ -28,7 +28,7 @@ const App = (props)=> {
   const handleCallback = (childData) =>{
     setSearchText(childData);
     setStatus(true);
-    dispatch({ type: "ADD_TEXT", payload: childData})
+    //dispatch({ type: "ADD_TEXT", payload: childData})
 
 
 
@@ -45,7 +45,7 @@ const App = (props)=> {
      //  dispatch({ type: "ADD_SEARCH_ITEMS", payload: data.data})
     };
 
-    getData();
+    //getData();
 
 
 
@@ -57,15 +57,17 @@ const App = (props)=> {
 // console.log(props)
 // },[searchText])
 
+    console.log(searchText+' is passed');
+    console.log(' status is '+status);
 
     // const { name } = this.props;
     return (
       <>
       <Header searchData = {handleCallback}/>
       <Switch>
-      {/* <Route key='phones' exact  path='/' 
-      render={(props) => <Body status={status} from="home" searchText={searchText} {...props} />}
-      ></Route> */}
+      <Route key='phones' exact  path='/' //status={status}
+      render={(props) => <Body status={status}  searchText={searchText} {...props} />}
+      ></Route>
       {/* <Route key='phones'  path='/search' 
       render={(props) => <Body status={status} from="home" searchText={searchText} {...props} />}
       ></Route> */}

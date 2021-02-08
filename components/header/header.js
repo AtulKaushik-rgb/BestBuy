@@ -4,6 +4,7 @@ import "./header.module.css";
 import {NavLink,Redirect,withRouter} from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
 import Modal from '../modal/modal'
+
 const header = (props) => {
 
   const cartItem = useSelector(state => state.cart);

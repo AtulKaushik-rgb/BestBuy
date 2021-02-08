@@ -8,94 +8,83 @@ const footer = () => {
         <div className="links-inner">
           <ul>
             <li>
-              <h3>What's new</h3>
+              <h3>ABOUT</h3>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Contact Us</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">About Us</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Stories</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Press</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
-            </li>
-            <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Wholesale</a>
             </li>
           </ul>
           <ul>
             <li>
-              <h3>What's new</h3>
+              <h3>HELP</h3>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Payments</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Shipping</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Cancellation & Returns</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">FAQ</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
-            </li>
-            <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Report Infringement</a>
             </li>
           </ul>
           <ul>
             <li>
-              <h3>What's new</h3>
+              <h3>POLICY</h3>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Return Policy</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Terms Of Use</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Security</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Sitemap</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">EPR Compliance</a>
             </li>
-            <li>
-              <a href="#">Surface pro x</a>
-            </li>
+
           </ul>
           <ul>
             <li>
-              <h3>What's new</h3>
+              <h3>SOCIAL</h3>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Facebook</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Twitter</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">YouTube</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Mail Us:</a>
             </li>
             <li>
-              <a href="#">Surface pro x</a>
-            </li>
-            <li>
-              <a href="#">Surface pro x</a>
+              <a href="#">Fax</a>
             </li>
           </ul>
          </div>

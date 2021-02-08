@@ -15,7 +15,8 @@
   
 }
 .stars{
-    color:lawngreen
+    color:goldenrod;
+    
 }
 .card_image img{
     object-fit: contain;
@@ -39,8 +40,8 @@
     border: none;
     width: 100px;
     height: auto;
-    margin: 5px;
-    padding: 5px;
+    margin: 0 auto;
+    
 }
 .body button:disabled{
     color: black;

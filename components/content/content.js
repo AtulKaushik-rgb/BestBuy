@@ -10,7 +10,7 @@ const content = (props) => {
     const dispatch = useDispatch();
     //let searchText = useSelector(state=>state.searchText);
    // let itemData = useSelector(state => state.items,shallowEqual);
-    //let filterData = useSelector(state => state.filters,shallowEqual);
+    let filterData = useSelector(state => state.filters,shallowEqual);
    // const cartItem = useSelector(state => state.cart);
     let searched = useSelector(state => state.searchText);
     const [currentData,setCurrentData] = useState([]);
@@ -49,7 +49,7 @@ const content = (props) => {
     let data = [];
     useEffect(()=>{
 
-      console.log('useEffect called');
+      //console.log('useEffect called');
       const getData = async () => {
 
         let url = null;
@@ -70,10 +70,17 @@ const content = (props) => {
              );
              if (contentData)
               data = contentData;
-            console.log('data value is');
-              console.log(contentData.data);
-            console.log('after adding is');
-             data = [...contentData.data];
+            //console.log('data value is');
+           //   console.log(contentData.data);
+          //  console.log('after adding is');
+          if(filterData)
+          data = filterData.data; 
+          else  
+          data = [...contentData.data];
+
+
+
+
              setCurrentData(data);
              //setNewData(data);
              //console.log('dispatching...')

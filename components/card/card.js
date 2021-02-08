@@ -44,9 +44,9 @@ const card = (props) => {
         />
       </div>
       <div className={styles.body}>
-        <h5>{title}</h5>
-        <p className={styles.stars}>{stars}★</p>
-        <h6>{prices}</h6>
+        <h5 style={{marginTop:'10px'}}>{title}</h5>
+        <p styles={{marginLeft:'10px'}}className={styles.stars}>{stars}★</p>
+        <h5>₹{prices}</h5>
         <button id='cart_button' disabled={disabledButton} onClick={addToCardClickHandler}>{disabledButton?'Added ✓':'Add to cart'}</button>
       </div>
     </div>

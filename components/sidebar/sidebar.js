@@ -94,7 +94,7 @@ const sidebar = (props) => {
         <h5 className={styles.filter_text}>Filters</h5>
         <hr />
         <div className={styles.range_container}>
-          <div className={styles.filter_text}>
+          <div className={styles.price_text}>
             <h5>Price</h5>
           </div>
           <div className={styles.ranges}>
@@ -113,16 +113,16 @@ const sidebar = (props) => {
               ></input>
             </div>
             <div className={styles.left}>
-              <p>Minimum</p>
-              <h6>100</h6>
+              <h6>Min : 100</h6>
             </div>
             <div className={styles.right}>
-              <p>Maximum</p>
-              <h6>{range.value}</h6>
+              <h6>Max : {range.value}</h6>
             </div>
           </div>
         </div>
-
+<br/>
+<br/>
+        <hr />
         <div className={styles.brands_container}>
           <button
             type="button"
@@ -134,7 +134,7 @@ const sidebar = (props) => {
             </span>
             <span className={styles.right}>
               <i
-                className={`fa fa-chevron-${brandsActive ? "up" : "down"}`}
+                className={`fa fa-chevron-${starsActive ? "up" : "down"}`}
                 aria-hidden="true"
               ></i>
             </span>
@@ -260,10 +260,9 @@ const sidebar = (props) => {
             </label>
           </div>
         </div>
-
         <hr />
-        <div>
-          <button onClick={ApplyFilters}>Apply</button>
+        <div className={styles.applyFilter}>
+          <button styles={styles.applybtn}onClick={ApplyFilters}>Apply</button>
         </div>
       </div>
     </>
