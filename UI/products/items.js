@@ -6,9 +6,6 @@ import React from 'react'
 
 const items = (props) => {
 
-  console.log('inside product');
-  console.log(props.deal);
-
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },

@@ -6,36 +6,23 @@ import { Toast } from "bootstrap";
 
 const card = (props) => {
 
-  console.log('inside indi cards');
-
     const title = props.cardData.title;
     const url = props.cardData.imageUrl;
     const prices = props.cardData.prices;
     const stars = props.cardData.customer_rating;
 
-    console.log(title,url,prices,stars)
 
     const [disabledButton,setDisabledButton] = useState(false);
     const dispatch = useDispatch()
     const addToCardClickHandler = () =>{
       setDisabledButton(true);
+
       return dispatch({type:'ADD_TO_CART',payload:props.cardData});
     }
 
-    // const toastMessage = (
-    //   <Toast >
-    //       <Toast.Header>
-    //         <strong className="mr-auto">BestBuy</strong>
-    //         <small>11 mins ago</small>
-    //       </Toast.Header>
-    //       <Toast.Body>1 Item added to cart!</Toast.Body>
-    //     </Toast>
-    // )
-    //"https://rukminim1.flixcart.com/image/495/594/kk5rgy80/t-shirt/r/3/4/xxl-tblhdful-d32-tripr-original-imafzkbskeagqyzf.jpeg"
-
   return (
     <>
-    {console.log('inside return')}
+  
     <div className={styles.card}>
       <div className={styles.card_image}>
         <img
@@ -46,7 +33,7 @@ const card = (props) => {
       <div className={styles.body}>
         <h5 style={{marginTop:'10px'}}>{title}</h5>
         <p styles={{marginLeft:'10px'}}className={styles.stars}>{stars}★</p>
-        <h5>₹{prices}</h5>
+        <h5>₹ {prices}</h5>
         <button id='cart_button' disabled={disabledButton} onClick={addToCardClickHandler}>{disabledButton?'Added ✓':'Add to cart'}</button>
       </div>
     </div>

@@ -1,28 +1,27 @@
 import React, { useState } from "react";
 import styles from "./sidebar.module.css";
-import axios from 'axios';
-import {useDispatch} from 'react-redux'
+import axios from "axios";
+import { useDispatch } from "react-redux";
 
 const sidebar = (props) => {
   const [starsActive, setStarsActive] = useState(true);
   const [brandsActive, setBrandsActive] = useState(true);
   const [range, setRange] = useState({ value: 800 });
-  const [ratings, setRatings] = useState([]);
-  const [brands, setBrands] = useState([]);
   const dispatch = useDispatch();
 
-  const [filters,setFilter] = useState({
-    brands:[],
-    ratings:[],
-    range:{
-      min:100,
-      max:800
-    }
-  })
+  const [filters, setFilter] = useState({
+    brands: [],
+    ratings: [],
+    range: {
+      min: 100,
+      max: 800,
+    },
+  });
+  const [filterData, setFilterData] = useState([]);
 
   const ChangeRangeHandler = (e) => {
     setRange({ value: e.target.value });
-    setFilter({...filters,range:{min:100,max:e.target.value}});
+    setFilter({ ...filters, range: { min: 100, max: e.target.value } });
   };
   const ChangeRatingsHandler = (e) => {
     if (!filters.ratings.includes(e.target.value))
@@ -41,52 +40,33 @@ const sidebar = (props) => {
     }
   };
 
-  const ApplyFilters = () =>{
-    
-    console.log('it is loaded from '+props.loadedFrom+'where search text = '+props.searchQuery);
-
-
-    let query = `http://localhost:3000/items/search?q=all`
+  const ApplyFilters = () => {
+    let query = `http://localhost:3000/items/search?q=all`;
 
     let maxPrice = filters.range.max;
-    let star = Math.min(filters.ratings);
     let brands = filters.brands;
 
+    let star = filters.ratings.map((item) => parseInt(item));
+
+    star = Math.min(...star);
+
     let queryappend = `&max=${maxPrice}&star=${star}`;
-    
-     brands = encodeURIComponent(JSON.stringify(brands));
 
-    // let i;
-    //   for (i = 0; i < brands.length; i++) {
-    //     queryappend += `&brand${i+1}=${brands[i]}`;
-    console.log(query+queryappend+'&brands='+brands);
+    brands = encodeURIComponent(JSON.stringify(brands));
 
-    //   }
-    query = query+queryappend+'&brands='+brands;
+    query = query + queryappend + "&brands=" + brands;
 
-      
-    // console.log('price'+maxPrice);
-    // console.log('stars'+star);
-    // console.log(brands)
+
     let data = null;
     const getData = async () => {
-      const contentData = await axios.get(
-        query
-      );
-      if (contentData) data = contentData;
-      //console.log('dispatching...')
-      
-     //  if(query=='refresh')
-     //  dispatch({ type: "ADD_SEARCH_ITEMS", payload: data.data})
+      const contentData = await axios.get(query);
+      if (contentData) data = contentData.data;
+
+
+      return dispatch({ type: "ADD_FILTERS", payload: data });
     };
-
-     getData();
-
-    // dispatch({ type: "ADD_ITEMS", payload: data})
-    return dispatch({ type: "ADD_FILTERS", payload: data})
-    //return dispatch({tu})
-
-  }
+    getData();
+  };
 
   return (
     <>
@@ -100,7 +80,6 @@ const sidebar = (props) => {
           <div className={styles.ranges}>
             <div styles={styles.input_div}>
               <input
-                // className={styles.input_range}
                 style={{ width: "200px" }}
                 type="range"
                 min="100"
@@ -120,8 +99,8 @@ const sidebar = (props) => {
             </div>
           </div>
         </div>
-<br/>
-<br/>
+        <br />
+        <br />
         <hr />
         <div className={styles.brands_container}>
           <button
@@ -152,7 +131,7 @@ const sidebar = (props) => {
               onChange={ChangeBrandsHandler}
             ></input>
             <label for="American Tourister" className={styles.star_number}>
-            D&G
+              D&G
             </label>
             <br />
             <input
@@ -163,7 +142,7 @@ const sidebar = (props) => {
               onChange={ChangeBrandsHandler}
             ></input>
             <label for="American Tourister" className={styles.star_number}>
-            Peter England
+              Peter England
             </label>
             <br />
             <input
@@ -262,7 +241,9 @@ const sidebar = (props) => {
         </div>
         <hr />
         <div className={styles.applyFilter}>
-          <button styles={styles.applybtn}onClick={ApplyFilters}>Apply</button>
+          <button styles={styles.applybtn} onClick={ApplyFilters}>
+            Apply
+          </button>
         </div>
       </div>
     </>
