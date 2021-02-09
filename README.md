@@ -11,10 +11,16 @@ npm install
 ```
 
 
-To create a development build:
+To to run on localhost:8080:
 
 ```sh
 npm start
+```
+
+how to start :
+
+```sh
+Click on bestbuy logo to get started
 ```
 
 ## Running
