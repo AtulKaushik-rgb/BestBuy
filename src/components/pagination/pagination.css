@@ -1,0 +1,7 @@
+/* .pagination{
+    width: 700px;
+    height: 100px;
+} */
+.page-item .active{
+    background-color: var(--new-color) !important;
+}
