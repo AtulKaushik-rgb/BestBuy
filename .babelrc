@@ -6,7 +6,8 @@
   "plugins": [
     "@babel/plugin-transform-runtime",
     "@babel/plugin-transform-spread",
-    "babel-plugin-transform-object-rest-spread"
+    // "babel-plugin-transform-object-rest-spread",
+    "@babel/plugin-proposal-object-rest-spread"
   ]
 }
 

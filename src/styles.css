@@ -34,7 +34,10 @@ html, body {
   box-sizing:border-box;
   height: 100%;
   background-color: var(--light-color);
-  /* overflow-y: scroll; */
+  overflow-x: none;
   font-family: 'Poppins', sans-serif;
 }    
 
+/* .animate > * {
+  transition: all ease-in 0.3;
+} */

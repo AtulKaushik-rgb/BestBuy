@@ -1,0 +1,19 @@
+.content_containers{
+    width: 80vw;
+    height: 100%;
+    background-color: var(--light-color);
+    margin-left: 10px;
+    margin-top:10px;
+}
+.cardlist_containers{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.pagination_container{
+    margin: 5px 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

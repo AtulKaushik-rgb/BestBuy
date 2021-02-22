@@ -1,15 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
 
-
 const config = {
   entry: [
     './src/index.js'
   ],
   output: {
-    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath : '/'
+    path: path.resolve(__dirname, 'dist')   
   },
   module: {
     rules: [
@@ -75,10 +73,7 @@ const config = {
     //     ]
     // },
     { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader' }
-    // {
-    //   test: /\.(sass|less|css)$/,
-    //   loader: ['style-loader', 'css-loader', 'less-loader']
-    // }
+
     ]
   },
   resolve: {

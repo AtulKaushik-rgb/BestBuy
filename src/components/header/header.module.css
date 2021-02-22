@@ -1,0 +1,139 @@
+.container{
+    width: 90vw;
+    height:10vh;
+    margin: 0 auto;
+}
+
+.nav_container{
+    width: 100%;
+    height: 100%;
+    background-color: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.logo{
+    background-color: none;
+}
+
+.nav_ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    
+}
+.nav_lists{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    height: 100%;
+}
+.nav_lists:visited{
+    list-style:none;
+}
+.nav_lists  a:hover{
+    list-style:none;
+    transform: scale(1.2);
+}
+
+.nav_li{
+    margin: 0px 20px;
+    
+}
+.nav_li a{
+    color: white;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+.nav_header{
+    height:10vh;
+    width: 100%;
+    background-color: var(--new-color);
+    color: #fff;
+}
+.search_div{
+    width: auto;
+    height: 100%;
+    position:  relative;
+}
+.icon{
+    position: absolute;
+    top: 12px;
+    right: 0px;
+    padding: 10px;
+    height: 2.5rem; 
+    color: white;
+    background-color: var(--light-color);
+    /* overflow: none; */
+}
+input[type="text"]{
+    padding-left:10px;
+    outline: none;
+}
+.search_input{
+    width: 500px;
+    height: 2.5rem;
+    margin-top: 0.75rem;
+    position: relative;
+    overflow: hidden;
+    border: none;
+}
+.search_input:focus{
+    border:none
+}
+.search_icon{
+    /* position: absolute; */
+    top: 1.2rem;
+    left: 720px; 
+    color: black;
+    font-size: 1.2rem;
+    position: fixed;
+}
+.search_icon:hover{
+    transform:scale(1.1);
+}
+.search_input::after{
+    content: '\f002';
+    right: 10px;
+}
+
+
+.badge {
+    color: white;
+    font-weight: 700;
+    background-color: var(--new-color);
+    /* border: none; */
+    /* font-size:1.5rem */
+}
+.badge:hover{
+    background-color:var(--new-color) ;
+}
+.badge:active{
+    background-color:var(--new-color) ;
+}
+button{
+   font-weight: 500;
+}
+
+.nav_active{
+    background-color: #0069D9;
+    border-radius: 5%;
+    border-top: none;
+}
+
+i {
+    /* display: absolute; */
+    color: black;
+    top: -20px;
+    right: 0px;
+}
+
+/* button .cart{
+    background-color: none;
+    border: none;
+} */
