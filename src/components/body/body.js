@@ -1,10 +1,8 @@
 import React from "react";
 import styles from "./body.module.css";
-import Sidebar from "../sidebar/sidebar";
 import Content from "../content/content";
 import Home from "../../components/home/home1";
 import { useLocation } from "react-router-dom";
-import Menu from '../menu/menu'
 
 const body = (props) => {
   let display = null;
@@ -21,7 +19,7 @@ const body = (props) => {
         <div className={styles.body_containers}>
           {/* <Sidebar loadedFrom={currentPath} searchQuery={props.searchText} /> */}
           <Content loadedFrom={currentPath} searchQuery={props.searchText} />
-         </div>
+        </div>
       </>
     );
   } else {
