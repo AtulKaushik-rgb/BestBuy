@@ -4,7 +4,9 @@ import "./header.module.css";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Modal from "../modal/modal";
+//import TranstionsModal from "../modal/TransitionsModal";
 import {useHistory} from 'react-router';
+
 
 const header = (props) => {
   const history = useHistory();

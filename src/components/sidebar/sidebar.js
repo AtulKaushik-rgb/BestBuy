@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./sidebar.module.css";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import {useHistory} from 'react-router'
+import { useHistory } from "react-router";
 
 const sidebar = (props) => {
   const [starsActive, setStarsActive] = useState(true);
@@ -43,8 +43,7 @@ const sidebar = (props) => {
   };
 
   const ApplyFilters = () => {
-
-    console.log('filter applied')
+    console.log("filter applied");
 
     let query = `http://localhost:3000/items/search?q=all`;
 
@@ -55,28 +54,24 @@ const sidebar = (props) => {
 
     star = Math.min(...star);
 
-
-
-    if(filters.ratings.length == 0)
-    star = 1;
-
+    if (filters.ratings.length == 0) star = 1;
 
     let queryappend = `&max=${maxPrice}&star=${star}
-    ${brands.length>0
-      ?`&brands=${encodeURIComponent(JSON.stringify(brands))}`
-      :''}`;
+    ${
+      brands.length > 0
+        ? `&brands=${encodeURIComponent(JSON.stringify(brands))}`
+        : ""
+    }`;
 
     // brands = encodeURIComponent(JSON.stringify(brands));
 
     //query = query + queryappend + "&brands=" + brands;
 
-
-    history.push('/search?q=all'+queryappend);
+    history.push("/search?q=all" + queryappend);
     // let data = null;
     // const getData = async () => {
     //   const contentData = await axios.get(query);
     //   if (contentData) data = contentData.data;
-
 
     //   return dispatch({ type: "ADD_FILTERS", payload: data });
     // };
