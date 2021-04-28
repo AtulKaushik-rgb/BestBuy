@@ -33,16 +33,18 @@ const content = (props) => {
   //     console.log('current url is',url)
   // }
    const getData = async () => {
-     console.log('url is',url);
+     console.log('param is',searchParam);
       let url = `https://backend-poc.netlify.app/.netlify/functions/api/items/search?q=all`;
 
       if (searchParam)
-        url = "https://bestbuy-shopping.netlify.app/items/search?q=" + searchParam;
+        url = "https://backend-poc.netlify.app/.netlify/functions/api/items/search?q=" + searchParam;
 
     
 
       const contentData = await axios.get(url);
-      data = [...contentData.data];
+
+      console.log('content data is ',contentData);
+      data = [...contentData.data.default.items];
       setCardData(data);
 
     };
