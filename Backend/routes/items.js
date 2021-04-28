@@ -6,9 +6,17 @@ const { json } = require("express");
 
 /* GET users listing. */
 router.get("/", async function (req, res, next) {
+
+  let url = null;
+  if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+    url = process.env.hostUrl;
+} else {
+    url = process.env.prodUrl;
+}
+
   let data = null;
   try {
-    const response = await axios.get(process.env.hostUrl + "/items");
+    const response = await axios.get(process.env.url + "/items");
     data = await response.data;
   } catch (error) {
     res.send("inside catch");
@@ -21,7 +29,7 @@ router.get("/", async function (req, res, next) {
 router.get("/books", async function (req, res, next) {
   let data = null;
   try {
-    const response = await axios.get(process.env.hostUrl + "/items");
+    const response = await axios.get(process.env.url + "/items");
     const output = response.data;
     data = output.filter((items) => items.type == 401);
   } catch (error) {
@@ -35,7 +43,7 @@ router.get("/books", async function (req, res, next) {
 router.get("/clothes", async function (req, res, next) {
   let data = null;
   try {
-    const response = await axios.get(process.env.hostUrl + "/items");
+    const response = await axios.get(process.env.url + "/items");
     const output = response.data;
     data = output.filter((items) => items.type == 400);
   } catch (error) {
@@ -49,7 +57,7 @@ router.get("/clothes", async function (req, res, next) {
 router.get("/phones", async function (req, res, next) {
   let data = null;
   try {
-    const response = await axios.get(process.env.hostUrl + "/items");
+    const response = await axios.get(process.env.url + "/items");
     const output = response.data;
     data = output.filter((items) => items.type == 402);
   } catch (error) {
@@ -63,7 +71,7 @@ router.get("/phones", async function (req, res, next) {
 router.get("/search", async function (req, res, next) {
   let data = null;
   try {
-    const response = await axios.get(process.env.hostUrl + "/items");
+    const response = await axios.get(process.env.url + "/items");
     const output = response.data;
 
     //console.log(output);

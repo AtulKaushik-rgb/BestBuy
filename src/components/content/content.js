@@ -6,6 +6,7 @@ import axios from "axios";
 import {useHistory} from 'react-router'
 import Pagination from "../../components/pagination/pagination"
 
+
 const content = (props) => {
 
   let data = [];
@@ -23,11 +24,18 @@ const content = (props) => {
 
   useEffect(() => {
 
-    const getData = async () => {
-      let url = "http://localhost:3000/items/search?q=all";
+    let url = null;
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+      url = process.env.REACT_APP_hostUrl;
+  } else {
+      url = process.env.prodUrl;
+  }
+   const getData = async () => {
+     console.log('url is',url);
+      let url = `https://bestbuy-shopping.netlify.app/items/search?q=all`;
 
       if (searchParam)
-        url = "http://localhost:3000/items/search?q=" + searchParam;
+        url = "https://bestbuy-shopping.netlify.app/items/search?q=" + searchParam;
 
     
 

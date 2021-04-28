@@ -58,8 +58,16 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000, () => {
-    console.log(`Example app listening at http://localhost:3000`)
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  app.listen(3000, () => {
+    console.log(`SERVER RUNNING on 3000`)
   })
+} else {
+  app.listen(process.env.prodUrl, () => {
+    console.log(`SERVER RUNNING on prod`)
+  })
+}
+
+
 
 module.exports = app;

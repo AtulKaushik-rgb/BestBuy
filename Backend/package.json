@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node app.js",
     "begin":"node app.js",
-    "begin-server":"json-server --watch db.json --host 127.0.0.1",
+    "begin-server":"json-server --watch db.json ",
     "dev-start": "nodemon app.js"
   },
   "dependencies": {
