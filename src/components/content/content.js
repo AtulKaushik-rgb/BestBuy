@@ -34,7 +34,7 @@ const content = (props) => {
   // }
    const getData = async () => {
      console.log('url is',url);
-      let url = `https://bestbuy-shopping.netlify.app/items/search?q=all`;
+      let url = `https://backend-poc.netlify.app/.netlify/functions/api/items/search?q=all`;
 
       if (searchParam)
         url = "https://bestbuy-shopping.netlify.app/items/search?q=" + searchParam;
