@@ -27,8 +27,10 @@ const content = (props) => {
     let url = null;
     if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
       url = process.env.REACT_APP_hostUrl;
+      console.log('current url is',url)
   } else {
-      url = process.env.prodUrl;
+      url = process.env.REACT_APP_prodUrl;
+      console.log('current url is',url)
   }
    const getData = async () => {
      console.log('url is',url);
