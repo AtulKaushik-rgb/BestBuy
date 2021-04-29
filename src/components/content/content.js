@@ -33,18 +33,23 @@ const content = (props) => {
   //     console.log('current url is',url)
   // }
    const getData = async () => {
-     console.log('param is',searchParam);
+     // let url = `https://backend-poc.netlify.app/.netlify/functions/api/items/search?q=all`;
       let url = `https://backend-poc.netlify.app/.netlify/functions/api/items/search?q=all`;
 
       if (searchParam)
+      {
         url = "https://backend-poc.netlify.app/.netlify/functions/api/items/search?q=" + searchParam;
-
-    
-
+        //url = "http://localhost:9000/.netlify/functions/api/items/search?q=" + searchParam;
+        
+      }
       const contentData = await axios.get(url);
 
-      console.log('content data is ',contentData);
+
+      if(!searchParam)
       data = [...contentData.data.default.items];
+      else
+      data = [...contentData.data];
+
       setCardData(data);
 
     };

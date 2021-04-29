@@ -4,6 +4,7 @@ import "./header.module.css";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Modal from "../modal/modal";
+import {useDispatch} from 'react-redux'
 //import TranstionsModal from "../modal/TransitionsModal";
 import {useHistory} from 'react-router';
 
@@ -13,6 +14,7 @@ const header = (props) => {
   const cartItem = useSelector((state) => state.cart);
   const [inputText, setInputText] = useState("");
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
 
   let cartItemCount = 0;
   if (cartItem) cartItemCount = cartItem.length;
@@ -24,6 +26,15 @@ const header = (props) => {
   const handleClose = () => {
     setShow(false);
   };
+
+  const handleRemove = (obj) =>{
+
+    // let removedObj = {
+    //   cardData:obj,
+    // }
+
+    return dispatch({type:'REMOVE_FROM_CART',payload:obj});
+  }
 
   const addText = (e) => {
     e.preventDefault();
@@ -104,6 +115,7 @@ const header = (props) => {
         <Modal
           display={show}
           handleClose={handleClose}
+          handleRemove = {handleRemove}
           cartItem={cartItem}
         ></Modal>
       </div>

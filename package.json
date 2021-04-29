@@ -12,11 +12,8 @@
     "deploy": "gh-pages -d dist/index.html",
     "clean": "rm dist/bundle.js",
     "build": "webpack --mode production",
-    "dev": "webpack serve --hot --mode development",
-    "start-json": "json-server --watch db.json ",
-    "start-nodeserver": "node --prefix app.js",
-    "server": "npm start --prefix Backend",
-    "start": "concurrently \"npm run start-json\" \"npm run dev\" \"npm run server\""
+    "start": "webpack serve --hot --mode development"
+
   },
   "dependencies": {
     "@babel/plugin-transform-spread": "^7.12.13",

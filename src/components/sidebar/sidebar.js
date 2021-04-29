@@ -43,7 +43,6 @@ const sidebar = (props) => {
   };
 
   const ApplyFilters = () => {
-    console.log("filter applied");
 
     let query = `http://localhost:3000/items/search?q=all`;
 

@@ -26,6 +26,8 @@ const Modal = (props) => {
               <h6 >{item.customer_rating} ★</h6>
               </div>
             </div>
+          
+            <button onClick={()=>props.handleRemove(item)}>Remove</button>
           </li>
           <hr/>
         </>
@@ -37,7 +39,7 @@ const Modal = (props) => {
       <section className="modal-main">
       <button className='modalbtn' type="button" onClick={props.handleClose}>
           X
-        </button>
+      </button>
         {display}
       </section>
     </div>

@@ -35,9 +35,29 @@ const reducer = (state = { initialState }, action) => {
     case "ADD_BOOKS": {
       return { ...state, books: action.payload }; // state.items.filter(item=>item.type == '402')}
     }
+    
 
     case "FILTER_ITEMS": {
       return { ...state, items: state.items.filter(item=>item.title == action.payload) }; // state.items.filter(item=>item.type == '402')}
+    }
+   
+    case "FILTER_ITEMS": {
+      return { ...state, items: state.items.filter(item=>item.title == action.payload) }; // state.items.filter(item=>item.type == '402')}
+    }
+
+    case "REMOVE_FROM_CART":{
+
+      let removedItem = action.payload;
+      console.log(removedItem);
+      console.log(state.cartIds);
+      console.log(state.cart)
+      let newCartIds = state.cartIds.filter(id => id!=removedItem.id);
+      let newCart = state.cart.filter(item => item.id != removedItem.id);
+
+      return {...state,
+        cart:newCart,
+        cartIds:newCartIds}
+
     }
 
     case "ADD_TO_CART": {
