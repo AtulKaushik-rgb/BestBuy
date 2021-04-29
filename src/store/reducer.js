@@ -48,9 +48,6 @@ const reducer = (state = { initialState }, action) => {
     case "REMOVE_FROM_CART":{
 
       let removedItem = action.payload;
-      console.log(removedItem);
-      console.log(state.cartIds);
-      console.log(state.cart)
       let newCartIds = state.cartIds.filter(id => id!=removedItem.id);
       let newCart = state.cart.filter(item => item.id != removedItem.id);
 
