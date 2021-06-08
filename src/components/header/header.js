@@ -1,13 +1,12 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import styles from "../header/header.module.css";
 import "./header.module.css";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Modal from "../modal/modal";
-import {useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 //import TranstionsModal from "../modal/TransitionsModal";
-import {useHistory} from 'react-router';
-
+import { useHistory } from "react-router";
 
 const header = (props) => {
   const history = useHistory();
@@ -27,28 +26,24 @@ const header = (props) => {
     setShow(false);
   };
 
-  const handleRemove = (obj) =>{
-
+  const handleRemove = (obj) => {
     // let removedObj = {
     //   cardData:obj,
     // }
 
-    return dispatch({type:'REMOVE_FROM_CART',payload:obj});
-  }
+    return dispatch({ type: "REMOVE_FROM_CART", payload: obj });
+  };
 
   const addText = (e) => {
     e.preventDefault();
-    
-    if(inputText)
-    setInputText('');
 
+    if (inputText) setInputText("");
 
     // if(!props.status)
     props.setHomeStatus(true);
 
-    if(history.pathname !== '/')
-    history.push(inputText?'/search?q='+inputText:'/');
-
+    if (history.pathname !== "/")
+      history.push(inputText ? "/search?q=" + inputText : "/");
   };
 
   return (
@@ -57,38 +52,36 @@ const header = (props) => {
         <div className={styles.container}>
           <div className={styles.nav_container}>
             <div className={styles.logo_container}>
-              <h1 className={styles.logo} onClick={()=>props.setHomeStatus()}>BestBuy</h1>
+              <h1 className={styles.logo} onClick={() => props.setHomeStatus()}>
+                BestBuy
+              </h1>
             </div>
 
             <div className={styles.search_div}>
-              <form onSubmit = {addText}>
-              <input
-                className={styles.search_input}
-                type="text"
-                name="input"
-                autoComplete='off'
-                value={inputText}
-                onChange={inputChangeHandler}
-                placeholder='Search for products, brands and more..'
-              ></input>
+              <form onSubmit={addText}>
+                <input
+                  className={styles.search_input}
+                  type="text"
+                  name="input"
+                  autoComplete="off"
+                  value={inputText}
+                  onChange={inputChangeHandler}
+                  placeholder="Search for products, brands and more.."
+                ></input>
               </form>
 
-              <p className={styles.icon}
-              onClick={addText}>
-                <i
-                  className="fas fa-search"
-                
-                ></i>
+              <p className={styles.icon} onClick={addText}>
+                <i className="fas fa-search"></i>
               </p>
             </div>
 
             <div className={styles.nav_ul}>
               <ul className={styles.nav_lists}>
-                <li className={styles.nav_li}>
+                {/* <li className={styles.nav_li}>
                   <NavLink to="/">
                     Login
                   </NavLink>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className={styles.badge}>
@@ -97,12 +90,16 @@ const header = (props) => {
                   setShow(true);
                 }}
                 type="button"
-                style={{color:'#fff',fontSize:'1.5rem',border:'none'}}
+                style={{ color: "#fff", fontSize: "1.5rem", border: "none" }}
                 className="btn"
               >
-                <i className="fa fa-cart-arrow-down" style={{color:'#fff'}} aria-hidden="true"></i>{" "}
+                <i
+                  className="fa fa-cart-arrow-down"
+                  style={{ color: "#fff" }}
+                  aria-hidden="true"
+                ></i>{" "}
                 <span
-                style={{fontSize:'1rem',padding:'5px'}}
+                  style={{ fontSize: "1rem", padding: "5px" }}
                   className={` ${cartItemCount ? `badge badge-light` : ``}`}
                 >
                   {cartItemCount ? cartItemCount : ""}
@@ -115,7 +112,7 @@ const header = (props) => {
         <Modal
           display={show}
           handleClose={handleClose}
-          handleRemove = {handleRemove}
+          handleRemove={handleRemove}
           cartItem={cartItem}
         ></Modal>
       </div>
